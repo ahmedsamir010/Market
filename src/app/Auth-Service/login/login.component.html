@@ -1,0 +1,49 @@
+<section>
+  <div class="container">
+
+    <div class="row">
+
+
+  <form  class=" text-center" [formGroup]="loginData">
+    <h2 class=" py-3">Sign In To Market </h2>
+
+
+      <mat-error class=" pb-3">{{errorMessage}}</mat-error>
+
+      <mat-form-field class=" w-75" appearance="fill">
+        <mat-label>Enter your Email</mat-label>
+        <input type="email"  formControlName="email" placeholder="Enter Email"   class="" matInput  required>
+        <mat-error *ngIf="loginData.controls.email.status === 'INVALID'" >Please Enter Valid Email</mat-error>
+      </mat-form-field>
+
+
+
+
+      <mat-form-field class="my-3 w-75">
+        <mat-label>Enter Your Password</mat-label>
+        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+        <button class="hide" mat-icon-button matSuffix (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error  >Please Enter Valid Password</mat-error>
+    </mat-form-field>
+
+
+
+
+  <button class="glow-on-hover w-75 p-4"  mat-raised-button color="primary" type="submit" (click)="signIn(loginData)">
+
+  <span class=" fs-4" *ngIf="isLoading">  Log In </span>
+  <i  *ngIf="!isLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+
+
+  </button>
+
+  </form>
+
+
+
+  </div>
+  </div>
+  </section>

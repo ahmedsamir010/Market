@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg text-light navbar-dark ">
+  <div class="container">
+    <a class="navbar-brand hoverHeadline" routerLink="home"><i class="fa-solid fa-shop"></i> Market</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class=" ms-auto mb-2 mb-lg-0 d-flex justify-content-center align-items-center ">
+
+<li  class="nav-item p-2">
+  <a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" class="nav-link" [routerLink]="'cart'">Cart</a>
+</li>
+
+<li  *ngIf="!isLogin"  class="nav-item p-2">
+  <a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" class="nav-link" [routerLink]="'login'">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+</li>
+
+<li  *ngIf="!isLogin"  class="nav-item p-2">
+  <a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" class="nav-link" [routerLink]="'register'">Sign Up </a>
+</li>
+
+<li *ngIf="isLogin" class="nav-item p-2 ">
+  <a data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"  (click)="logOut()" class="nav-link" routerLink="login"> Log out <i class="fa-solid fa-right-from-bracket"></i></a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>

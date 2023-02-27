@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+// import font from google fonts
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Roboto:wght@300&display=swap');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root{
+  --bg-navbar:#7e55b2aa;
+  --text-font:'Mochiy Pop One', sans-serif;
+  --bg-main: rgb(21,1,39);
+}
+
+body{
+  background-color:var(--bg-main);
+  font-family: var(--text-font) !important;
+}
+p,h2,h3,h4,h1,a{
+  font-family: var(--text-font) !important;
+  color: #fff !important;
+}
+.product img{
+  height: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+ul{
+  list-style-type:none;
+}

@@ -1,0 +1,35 @@
+<div class="product" >
+
+  <img
+  [routerLink]="['/details/',product.id] "
+  class="w-100 image"
+  [src]="product.image"
+  [title]="product.title"
+  [alt]="product.title"
+    >
+  <h4 class=" text-center text-truncate ">{{product.title}}</h4>
+
+
+  <div class=" my-3 d-flex justify-content-between align-items-center">
+        <button *ngIf="add==true" class="btn bg-danger text-white " (click)="add=false" > Add To Cart </button>
+
+
+        <div *ngIf="add==false">
+        <div class="input-group">
+          <input class="form-control bg-light " type="number" (change)="changeAmount($event)" [(ngModel)]="product.Quantity" min="1">
+          <button (click)="add=true;addToCart()" type="button"  class="btn bg-danger text-white">Add</button>
+        </div>
+
+
+        </div>
+
+
+        <div>
+          <h4 class=" badge bg-secondary m-0 p-1 ">{{product.price |currency:"USD"}}</h4>
+        </div>
+
+
+  </div>
+
+</div>
+

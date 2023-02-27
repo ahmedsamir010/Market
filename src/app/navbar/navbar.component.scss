@@ -1,0 +1,9 @@
+.navbar{
+  background-color: #63428c;
+}
+.navbar li a{
+  transition: .5s all;
+}
+.navbar li  a:hover a{
+  color: rgb(12, 9, 113);
+}

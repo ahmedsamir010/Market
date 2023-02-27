@@ -1,0 +1,5 @@
+<h3 >{{title}} : </h3>
+  <select name="" id="" class=" mb-3" (change)="detectedChanges($event)">
+    <option value="All" selected>All</option>
+    <option value="{{option}}" *ngFor="let option of data">{{option}}</option>
+  </select>

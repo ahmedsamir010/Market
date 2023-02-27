@@ -1,0 +1,24 @@
+<div class="container py-5">
+
+<app-select [data]="allCategories" [title]="'Categories'" (selectedValue)="FilterCategory($event)"></app-select>
+
+  <div class="row" *ngIf="! loading">
+
+
+<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3" *ngFor="let product of allProducts">
+
+
+<app-product [product]="product" (item)="addToCart($event)" ></app-product>
+
+</div>
+
+</div>
+
+<ng-container class="text-center w-100" *ngIf="loading">
+  <app-spinner></app-spinner>
+
+    </ng-container>
+
+</div>
+
+

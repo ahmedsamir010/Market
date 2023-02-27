@@ -1,0 +1,115 @@
+<div class="container my-3" >
+
+  <!-- Header Cart -->
+<div class="row d-flex justify-content-between align-items-center">
+  <div class="col-md-10">
+    <div class="length-cart" >
+      <h1>Shopping Cart</h1>
+      <p>You have <label class="text-info fs-5">{{this.cartProducts.length}}</label> item in your cart </p>
+      </div>
+  </div>
+  <div  class="col-md-2">
+    <div class="clear-cart" *ngIf="this.cartProducts.length>0">
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">Clear Cart</button>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Product Info  -->
+  <div class="row" *ngIf="this.cartProducts.length>0">
+  <div *ngFor="let product of cartProducts;let i =index">
+    <div class="my-3">
+      <div class="row">
+  <div class="col-md-10 d-flex">
+      <img
+      class="img-prod"
+      [src]="product.item.image"
+      [title]="product.title"
+      [alt]="product.title"
+        >
+      <div class="info-product p-3">
+        <h3>Name : {{product.item.title.slice(0,25)}}</h3>
+        <h4>Price : {{product.item.price|currency}}</h4>
+        <div class="d-flex align-items-center">
+         <span class="text-white"> Quantity </span>
+         <button class="btn btn-success p-1 py-0 mx-2"(click)="minusQuantity(i)">-</button>
+         <input value="1" min="1" max="2"y (keyup)="changeAmount()" [(ngModel)]="product.Quantity" min="1">
+         <button class="btn btn-success p-1 py-0 mx-1" (click)="addQuantity(i)">+</button>
+        </div>
+        <h4 class="my-1">Total price = {{product.item.price * product.Quantity |currency:"USD"}}</h4>
+
+      </div>
+
+  </div>
+
+
+  <div class="delete-item col-md-2">
+
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModel2" (click)="passingIndex(i)">Delete</button>
+
+  </div>
+
+  </div>
+</div>
+
+<!-- Delete Product Modal-->
+<div class="modal fade" id="exampleModel2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <strong> Are You Sure To Delete Product Number {{this.productId+1}}</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="deleteProduct()" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+
+</div>
+
+
+  <hr class="text-success fs-5">
+  <div *ngIf="this.cartProducts.length>0" class="total-price alert alert-danger p-1 text-end">
+  <h2 class=" text-center">Total Price : {{this.totalPriceCart |currency:"USD"}}</h2>
+</div>
+<div class="text-end my-3">
+<button class="btn btn-success" (click)="addOrder()">Order Now</button>
+</div>
+</div>
+
+
+</div>
+
+
+<!-- Clear Shopping Cart -->
+<!-- Modal -->
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <strong> Are You Sure To Clear Shopping Cart</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="clearCart()" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

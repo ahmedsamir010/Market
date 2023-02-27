@@ -1,0 +1,51 @@
+<div class="container my-5" >
+
+<div class="row d-flex justify-content-center align-items-center" *ngIf="!loading">
+  <div class="col-md-4 my-5 ">
+    <div class="image-home  ">
+        <img
+          class="img-fluid rounded-3"
+          [src]="details.image"
+          [title]="details.title"
+          [alt]="details.title"
+         />
+    </div>
+  </div>
+<div class="col-md-8">
+
+<div class="details">
+
+  <h1>{{ details.title }}</h1>
+  <p class="text-muted mt-3">
+    {{ details.description }}
+  </p>
+  <hr />
+<ul>
+  <li>
+    <h3> Category : {{details.category }}</h3>
+  </li>
+  <li class="pt-2">
+    <h3>Price : {{details.price | currency: "USD"}}</h3>
+  <li>
+    <h3>Rate : {{ details.rating?.rate }}</h3>
+  </li>
+  <li>
+    <h3>Count : {{ details.rating?.count }}</h3>
+  </li>
+</ul>
+
+
+
+
+</div>
+
+</div>
+
+
+</div>
+<ng-container class="text-center w-100" *ngIf="loading">
+  <app-spinner></app-spinner>
+
+    </ng-container>
+</div>
+
