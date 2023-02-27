@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     next:(response)=>{
       if(response.message === 'success')
       {
-        this._Router.navigate(['/home']);
+        this._Router.navigate(['/login']);
         // Go to Home
       }
       else{

@@ -35,7 +35,7 @@
         <div class="d-flex align-items-center">
          <span class="text-white"> Quantity </span>
          <button class="btn btn-success p-1 py-0 mx-2"(click)="minusQuantity(i)">-</button>
-         <input value="1" min="1" max="2"y (keyup)="changeAmount()" [(ngModel)]="product.Quantity" min="1">
+         <input value="1" min="1" max="2" readonly (keyup)="changeAmount()" [(ngModel)]="product.Quantity" min="1">
          <button class="btn btn-success p-1 py-0 mx-1" (click)="addQuantity(i)">+</button>
         </div>
         <h4 class="my-1">Total price = {{product.item.price * product.Quantity |currency:"USD"}}</h4>
