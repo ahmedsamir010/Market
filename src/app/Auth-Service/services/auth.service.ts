@@ -29,13 +29,13 @@ export class AuthService  {
 //------------------------------------- Make Register ---------------------------------
 signUp(userData:any): Observable<any>
 {
-  return this._HttpClient.post(`http://accountbased.somee.com/api/Account/Register`,userData)
+  return this._HttpClient.post(`https://route-ecommerce.onrender.com/api/v1/auth/signup`,userData)
 }
 //------------------------------------- Make Login ---------------------------------
 
 signIn(userData:object): Observable<any>
 {
-  return this._HttpClient.post(`http://accountbased.somee.com/api/Account/Login`,userData)
+  return this._HttpClient.post(`https://route-ecommerce.onrender.com/api/v1/auth/signin`,userData)
 }
 
 //------------------------------------- Make Log out ---------------------------------
