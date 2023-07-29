@@ -1,56 +1,69 @@
-  <section class="py-5">
-    <div class="container">
-    <form   class=" text-center" [formGroup]="registerData">
-      <h2 class=" py-3">Sign Up To Market </h2>
-      <mat-error class=" pb-3">{{errorMessage}}</mat-error>
-        <mat-form-field class=" w-75" appearance="fill">
-          <mat-label>Enter your First Name</mat-label>
-          <input type="text" formControlName="first_name" placeholder="Enter First Name"  class="" matInput   >
-          <mat-error  >Please Enter Valid name</mat-error>
+<section class="py-5">
+  <div class="container">
+    <form (ngSubmit)="signUp()" class="text-center" [formGroup]="registerData">
+      <h3 class="pb-3">Sign Up To Movies</h3>
+      <mat-error>{{ errorMessage }}</mat-error>
 
-        </mat-form-field>
-
-        <mat-form-field class=" my-3 w-75" appearance="fill">
-          <mat-label>Enter your Last Name</mat-label>
-          <input type="text"  formControlName="last_name" placeholder="Enter Last Name" class="" matInput  required>
-          <mat-error  >Please Enter Valid name</mat-error>
-        </mat-form-field>
-
-
-        <mat-form-field class=" w-75" appearance="fill">
-          <mat-label>Enter your Email</mat-label>
-          <input type="email"  formControlName="email" placeholder="Enter Email"   class="" matInput  required>
-          <mat-error  >Please Enter Valid Email</mat-error>
-        </mat-form-field>
-
-
-         <mat-form-field class="my-3 w-75">
-          <mat-label>Enter Your Password</mat-label>
-          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
-          <button class="hide" mat-icon-button matSuffix (click)="hide = !hide"
-              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-          <mat-error  >Please Enter Valid Password</mat-error>
+      <mat-form-field class="w-75" appearance="fill">
+        <mat-label>Enter your Name</mat-label>
+        <input type="text" formControlName="name" placeholder="Enter Your Name" matInput>
+        <mat-error *ngIf="registerData.get('name')?.hasError('minlength')">
+          Name must be at least 3 characters long.
+        </mat-error>
+        <mat-error *ngIf="registerData.get('name')?.hasError('maxlength')">
+          Name can't be longer than 10 characters.
+        </mat-error>
+        <mat-error *ngIf="registerData.get('name')?.hasError('required')">
+          Name is required.
+        </mat-error>
       </mat-form-field>
 
+      <mat-form-field class="my-3 w-75" appearance="fill">
+        <mat-label>Enter your Email</mat-label>
+        <input type="email" formControlName="email" placeholder="Enter Email" matInput>
+        <mat-error *ngIf="registerData.controls['email'].invalid && registerData.controls['email'].touched">
+          Please enter a valid email address.
+        </mat-error>
+      </mat-form-field>
 
+      <mat-form-field class="w-75" appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" placeholder="Enter Password" type="password" matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerData.controls['password'].invalid && registerData.controls['password'].touched">
+          Please enter a valid password (minimum 3 characters, alphanumeric only).
+        </mat-error>        
+      </mat-form-field>
 
+      <mat-form-field class="my-3 w-75" appearance="fill">
+        <mat-label>Re-enter your password</mat-label>
+        <input formControlName="rePassword" placeholder="Re-enter Password" type="password" matInput [type]="hide ? 'password' : 'text'">
+        <mat-error *ngIf="registerData.hasError('passwordMismatch')">
+          Passwords do not match.
+        </mat-error>
+      </mat-form-field>
 
+      <mat-form-field class="my-3 w-75" appearance="fill">
+        <mat-label>Enter your Phone Number</mat-label>
+        <input type="text" formControlName="phone" placeholder="Enter Phone Number" matInput>
+        <mat-error *ngIf="registerData.get('phone')?.hasError('pattern')">
+          Please enter a valid Egypt phone number (e.g., 01012345678).
+        </mat-error>
+        <mat-error *ngIf="registerData.get('phone')?.hasError('required')">
+          Phone number is required.
+        </mat-error>
+      </mat-form-field>
 
-    <br>
+      <br>
 
-    <button class="glow-on-hover w-75 p-4"  mat-raised-button color="primary" type="submit" (click)="signUp(registerData)">
-
-      <span class=" fs-4" *ngIf="isLoading">  Sign Up  </span>
-      <i  *ngIf="!isLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
-
-
+      <button class="glow-on-hover w-75 p-2" mat-raised-button color="primary" type="submit">
+        <span *ngIf="!isLoading; else loadingIcon" style="font-size:20px">Sign Up</span>
+        <ng-template #loadingIcon>
+          <i class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+        </ng-template>
       </button>
-
     </form>
-
-
-
-    </div>
-    </section>
+  </div>
+</section>

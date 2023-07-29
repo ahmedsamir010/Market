@@ -11,8 +11,6 @@ export class AuthService  {
   userData:any=new BehaviorSubject(null);
 
   constructor(private _HttpClient:HttpClient,private _Router:Router){    this.alreadyLogin()}
-
-
   alreadyLogin():void{
     if(localStorage.getItem("userToken")!=null)
     {
@@ -29,13 +27,13 @@ export class AuthService  {
 //------------------------------------- Make Register ---------------------------------
 signUp(userData:any): Observable<any>
 {
-  return this._HttpClient.post(`https://route-ecommerce.onrender.com/api/v1/auth/signup`,userData)
+  return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,userData)
 }
 //------------------------------------- Make Login ---------------------------------
 
 signIn(userData:object): Observable<any>
 {
-  return this._HttpClient.post(`https://route-ecommerce.onrender.com/api/v1/auth/signin`,userData)
+  return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`,userData)
 }
 
 //------------------------------------- Make Log out ---------------------------------
@@ -45,8 +43,6 @@ signOut()
   this.userData.next(null);
 this._Router.navigate(['/login']);
 }
-
-
 
 
 

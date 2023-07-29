@@ -35,7 +35,7 @@ this.getCategory();
 
   error=>{
     this.loading=false
-    alert("Error ...  ")
+    alert("We apologize for you . There is currently an issue with the API, and efforts are underway to resolve it")
   }
 
 
@@ -59,7 +59,7 @@ this.getCategory();
 
   error=>{
     this.loading=false
-    alert("Error ...  ")
+    alert("We apologize for you . There is currently an issue with the API, and efforts are underway to resolve it")
   }
 
 
